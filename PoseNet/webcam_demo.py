@@ -4,6 +4,7 @@ import time
 import argparse
 import os
 import math
+from object_detector import *
 
 import posenet
 
