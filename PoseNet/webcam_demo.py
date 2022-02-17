@@ -4,6 +4,8 @@ import time
 import argparse
 import os
 import math
+import numpy as np
+import serial
 from object_detector import *
 
 import posenet
@@ -88,9 +90,9 @@ def main():
                 if pose_scores[0] <= 0.25:
                     print("Body not detected. Please try again.")
                 elif corners:    
-                    img_name = "C:/Users/outan/OneDrive/Laptop/SHELL/PoseNet/savedimages/output.jpg"
+                    # img_name = "C:/Users/outan/OneDrive/Laptop/SHELL/PoseNet/savedimages/output.jpg"
                     cv2.imwrite(os.path.join(args.output_dir,'output.jpg'), overlay_image)
-                    print("{} written!".format(img_name))
+                    print("{} written!".format(os.path.join(args.output_dir,'output.jpg')))
                     print()
                     print("Results for image: ")
 
@@ -126,7 +128,11 @@ def main():
                     bodya_2 = math.sqrt((rknee_y - rankle_y)**2 + (rknee_x - rankle_x)**2)
                     bodya = ((bodya_1+bodya_2)/2) / pixel_cm_ratio
 
-                    print('Length of\nA = %f\nB = %f\nC = %f\nF = %f' % (bodya, bodyb, bodyc, bodyf))
+                    print("Length of\nA = %f cm\nB = %f cm\nC = %f cm\nF = %fcm" % (bodya, bodyb, bodyc, bodyf))
+                    ser = serial.Serial('COM6', 9600)
+                    time.sleep(2)
+                    ser.write("%f %f %f %f" % (bodya, bodyb, bodyc, bodyf))
+                    ser.close()
                 else:
                     print("Marker not detected. Please try again.")
 
