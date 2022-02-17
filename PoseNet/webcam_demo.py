@@ -16,7 +16,7 @@ aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=int, default=101)
-parser.add_argument('--cam_id', type=int, default=0)
+parser.add_argument('--cam_id', type=int, default=2)
 parser.add_argument('--cam_width', type=int, default=1280)
 parser.add_argument('--cam_height', type=int, default=720)
 parser.add_argument('--scale_factor', type=float, default=0.7125)
@@ -129,9 +129,10 @@ def main():
                     bodya = ((bodya_1+bodya_2)/2) / pixel_cm_ratio
 
                     print("Length of\nA = %f cm\nB = %f cm\nC = %f cm\nF = %fcm" % (bodya, bodyb, bodyc, bodyf))
-                    ser = serial.Serial('COM6', 9600)
+                    ser = serial.Serial('COM1', 9600)
                     time.sleep(2)
-                    ser.write("%f %f %f %f" % (bodya, bodyb, bodyc, bodyf))
+                    data_send = "%d %d %d %d\r\n" % (int(bodya), int(bodyb), int(bodyc), int(bodyf))
+                    ser.write(str.encode(data_send))
                     ser.close()
                 else:
                     print("Marker not detected. Please try again.")
