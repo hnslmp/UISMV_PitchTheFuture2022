@@ -7,6 +7,13 @@ import math
 
 import posenet
 
+# Load Aruco detector
+parameters = cv2.aruco.DetectorParameters_create()
+aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
+
+# Load Object Detector
+detector = HomogeneousBgDetector()
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=int, default=101)
 parser.add_argument('--cam_id', type=int, default=0)
@@ -59,25 +66,28 @@ def main():
                 display_image, pose_scores, keypoint_scores, keypoint_coords,
                 min_pose_score=0.15, min_part_score=0.1)
 
+            # Get Aruco marker
+            corners, _, _ = cv2.aruco.detectMarkers(display_image, aruco_dict, parameters=parameters)
+
+            if corners:
+                # Draw polygon around the marker
+                int_corners = np.int0(corners)
+                cv2.polylines(overlay_image, int_corners, True, (0, 255, 0), 5)
+
+                # Aruco Perimeter
+                aruco_perimeter = cv2.arcLength(corners[0], True)
+
+                # Pixel to cm ratio
+                pixel_cm_ratio = aruco_perimeter / 20
+
             cv2.imshow('posenet', overlay_image)
             frame_count += 1
-
-            # print("Results for image: ")
-            # for pi in range(len(pose_scores)):
-            #     if pose_scores[pi] == 0.:
-            #         break
-            #     print('Pose #%d, score = %f' % (pi, pose_scores[pi]))
-            #     for ki, (s, c) in enumerate(zip(keypoint_scores[pi, :], keypoint_coords[pi, :, :])):
-            #         if ki > 10 or (ki>4 and ki<7):
-            #             print('Keypoint %s, score = %f, coord = %s' % (posenet.PART_NAMES[ki], s, c))
-            #             score.append(s)
-            #             coord.append(c)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             if cv2.waitKey(1) & 0xFF == ord('a'):
-                if pose_scores[0] <= 0.25:
-                    print("Body not detected. Please try again.")
+                if pose_scores[0] <= 0.25 and corners:
+                    print("Body and marker not detected. Please try again.")
                 else:    
                     img_name = "C:/Users/outan/OneDrive/Laptop/SHELL/PoseNet/savedimages/output.jpg"
                     cv2.imwrite(os.path.join(args.output_dir,'output.jpg'), overlay_image)
@@ -108,14 +118,14 @@ def main():
                     rankle_x        = coord[7][0]
                     rankle_y        = coord[7][1]
 
-                    bodyf = math.sqrt((lshoulder_x - rshoulder_x)**2 + (lshoulder_y - rshoulder_y)**2)
-                    bodyc = math.sqrt((abs(2*rshoulder_x - lshoulder_x) - abs(2*rhip_x - lhip_x))**2 + (abs(2*rshoulder_y - lshoulder_y) - abs(2*rhip_y - lhip_y))**2)
+                    bodyf = (math.sqrt((lshoulder_x - rshoulder_x)**2 + (lshoulder_y - rshoulder_y)**2)) / pixel_cm_ratio
+                    bodyc = (math.sqrt((abs(2*rshoulder_x - lshoulder_x) - abs(2*rhip_x - lhip_x))**2 + (abs(2*rshoulder_y - lshoulder_y) - abs(2*rhip_y - lhip_y))**2)) / pixel_cm_ratio
                     bodyb_1 = math.sqrt((lhip_y - lknee_y)**2 + (lhip_x - lknee_x)**2)
                     bodyb_2 = math.sqrt((rhip_y - rknee_y)**2 + (rhip_x - rknee_x)**2)
-                    bodyb = (bodyb_1+bodyb_2)/2
+                    bodyb = ((bodyb_1+bodyb_2)/2) / pixel_cm_ratio
                     bodya_1 = math.sqrt((lknee_y - lankle_y)**2 + (lknee_x - lankle_x)**2)
                     bodya_2 = math.sqrt((rknee_y - rankle_y)**2 + (rknee_x - rankle_x)**2)
-                    bodya = (bodya_1+bodya_2)/2
+                    bodya = ((bodya_1+bodya_2)/2) / pixel_cm_ratio
 
                     print('Length of\nA = %f\nB = %f\nC = %f\nF = %f' % (bodya, bodyb, bodyc, bodyf))
 
