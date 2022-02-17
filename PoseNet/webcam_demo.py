@@ -11,9 +11,6 @@ import posenet
 parameters = cv2.aruco.DetectorParameters_create()
 aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
 
-# Load Object Detector
-detector = HomogeneousBgDetector()
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=int, default=101)
 parser.add_argument('--cam_id', type=int, default=0)
@@ -84,11 +81,12 @@ def main():
             frame_count += 1
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
+                print("Exiting program...")
                 break
             if cv2.waitKey(1) & 0xFF == ord('a'):
-                if pose_scores[0] <= 0.25 and corners:
-                    print("Body and marker not detected. Please try again.")
-                else:    
+                if pose_scores[0] <= 0.25:
+                    print("Body not detected. Please try again.")
+                elif corners:    
                     img_name = "C:/Users/outan/OneDrive/Laptop/SHELL/PoseNet/savedimages/output.jpg"
                     cv2.imwrite(os.path.join(args.output_dir,'output.jpg'), overlay_image)
                     print("{} written!".format(img_name))
@@ -128,6 +126,8 @@ def main():
                     bodya = ((bodya_1+bodya_2)/2) / pixel_cm_ratio
 
                     print('Length of\nA = %f\nB = %f\nC = %f\nF = %f' % (bodya, bodyb, bodyc, bodyf))
+                else:
+                    print("Marker not detected. Please try again.")
 
 
         print('Average FPS: ', frame_count / (time.time() - start))
