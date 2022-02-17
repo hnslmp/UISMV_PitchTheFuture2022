@@ -91,8 +91,6 @@ def main():
                             print('Keypoint %s, score = %f, coord = %s' % (posenet.PART_NAMES[ki], s, c))
                             coord.append(c)
 
-                    print(coord)
-
                     lshoulder_x     = coord[0][0]
                     lshoulder_y     = coord[0][1]
                     rshoulder_x     = coord[1][0]
@@ -112,7 +110,6 @@ def main():
 
                     bodyf = math.sqrt((lshoulder_x - rshoulder_x)**2 + (lshoulder_y - rshoulder_y)**2)
                     bodyc = math.sqrt((abs(2*rshoulder_x - lshoulder_x) - abs(2*rhip_x - lhip_x))**2 + (abs(2*rshoulder_y - lshoulder_y) - abs(2*rhip_y - lhip_y))**2)
-                    # bodyc = abs(rshoulder_y - lshoulder_y) - abs(rhip_y - lhip_y)
                     bodyb_1 = math.sqrt((lhip_y - lknee_y)**2 + (lhip_x - lknee_x)**2)
                     bodyb_2 = math.sqrt((rhip_y - rknee_y)**2 + (rhip_x - rknee_x)**2)
                     bodyb = (bodyb_1+bodyb_2)/2
