@@ -51,3 +51,4 @@ Proteus 8 Provessional V 8.9
 Arduino UNO Library by TheEngineeringProject (https://www.theengineeringprojects.com/2015/12/arduino-library-proteus-simulation.html)
 Virtual COM PORT (we used Eltima https://www.eltima.com/products/vspdxp/)
 ```
+After opening the project, you have to set the HEX accordingly. Right Click the arduino -> Edit Properties -> edit program -> choose the *.standard.hex file
