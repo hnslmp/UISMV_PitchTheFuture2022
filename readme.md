@@ -24,6 +24,7 @@ pip install pygame (to play warning sound)
 
 
 ## PoseNet Python - Chair Curvature Program
+This porgram contain heavily modified Posenet program by Ross Wightman (https://github.com/rwightman/posenet-python)
 
 This repository contains a pure Python implementation (multi-pose only) of the Google TensorFlow.js Posenet model. For a (slightly faster) PyTorch implementation that followed from this, see (https://github.com/rwightman/posenet-pytorch)
 
