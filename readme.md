@@ -60,7 +60,7 @@ Development and testing was done with Conda Python 3.6.13 and Tensorflow 1.12.0 
 If you want to use the webcam demo, a pip contrib version of opencv (`pip install opencv-contrib-python`) is required instead of the conda version. Anaconda's default opencv does not include ffpmeg/VideoCapture support.
 
 
-## 3.Proteus (For Simulation)
+## Proteus (For Simulation)
 This Program can simulate the serial protocol communication between the running script and the microcontroller used to control the chair parameter, to simulate this, you should have :
 ```
 Proteus 8 Provessional V 8.9 
