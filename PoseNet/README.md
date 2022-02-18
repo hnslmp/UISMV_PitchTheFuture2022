@@ -1,5 +1,7 @@
 ## PoseNet Python
 
+This prorgam contain heavily modified posenet standard program. Originally by Rwightman (https://github.com/rwightman/posenet-python)
+
 This repository contains a pure Python implementation (multi-pose only) of the Google TensorFlow.js Posenet model. For a (slightly faster) PyTorch implementation that followed from this, see (https://github.com/rwightman/posenet-pytorch)
 
 I first adapted the JS code more or less verbatim and found the performance was low so made some vectorized numpy/scipy version of a few key functions (named `_fast`).
