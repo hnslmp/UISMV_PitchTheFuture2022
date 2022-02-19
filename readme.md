@@ -43,6 +43,10 @@ pip install tensorflow (if you didnt create the environment with tensorflow)
 pip install pygame (to play warning sound)
 pip install pillow
 ```
+Then run the program by running :
+```
+drowsiness_detection.py
+```
 
 ## Install PoseNet Python - Chair Curvature Program
 
@@ -55,7 +59,14 @@ pip install pyyaml
 pip install opencv-contrib-python
 pip install pySerial
 ```
-
+Then Print the aruco marker and place it near your desired target (seatbelt for example). The aruco file is in the aruco folder and .pdf with name:
+```
+ArucoMarker.pdf
+```
+Then run the program by running :
+```
+webcam_demo.py
+```
 Development and testing was done with Conda Python 3.6.13 and Tensorflow 1.12.0 on Windows with Anaconda.
 
 If you want to use the webcam demo, a pip contrib version of opencv (`pip install opencv-contrib-python`) is required instead of the conda version. Anaconda's default opencv does not include ffpmeg/VideoCapture support.
