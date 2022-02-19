@@ -1,4 +1,5 @@
 # Arjuna Team - Shell Pitch the Future
+![alt text](https://github.com/hnslmp/UISMV_PitchTheFuture2022/blob/main/Docs/UISMV%20Logo.png)   
 ## University of Indonesia
 
 ## I.Introduction
