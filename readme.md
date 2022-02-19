@@ -25,7 +25,7 @@ Both of these program requires a camera to be connected to the Computer. Make su
 ## Prepare Environment
 Create a conda virtual environment with tensorflow and activate it.
 ```
-conda create -n arjunaptf tensorflow-gpu
+conda create -n arjunaptf python=3.6.13 tensorflow-gpu 
 conda activate arjunaptf
 ```
 
