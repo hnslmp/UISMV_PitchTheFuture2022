@@ -54,7 +54,6 @@ pip install scipy
 pip install pyyaml
 pip install opencv-contrib-python
 pip install pySerial
-
 ```
 
 Development and testing was done with Conda Python 3.6.13 and Tensorflow 1.12.0 on Windows with Anaconda.
