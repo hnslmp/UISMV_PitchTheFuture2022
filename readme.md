@@ -16,7 +16,7 @@ Both of these program requires a camera to be connected to the Computer. Make su
 ## III. Requirements
 - Tensorflow
 - Pygame
-- OpenCV
+- OpenCV (Contrib Version)
 - Scipy
 - Pyyaml
 - pySerial
