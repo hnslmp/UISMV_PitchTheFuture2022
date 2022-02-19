@@ -16,7 +16,7 @@ aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=int, default=101)
-parser.add_argument('--cam_id', type=int, default=2)
+parser.add_argument('--cam_id', type=int, default=1)
 parser.add_argument('--cam_width', type=int, default=1280)
 parser.add_argument('--cam_height', type=int, default=720)
 parser.add_argument('--scale_factor', type=float, default=0.7125)
@@ -27,6 +27,7 @@ args = parser.parse_args()
 coord = []
 
 def main():
+    ser = serial.Serial('COM1', 9600)
     with tf.Session() as sess:
         model_cfg, model_outputs = posenet.load_model(args.model, sess)
         output_stride = model_cfg['output_stride']
@@ -80,7 +81,7 @@ def main():
                 # Pixel to cm ratio
                 pixel_cm_ratio = aruco_perimeter / 20
 
-            cv2.imshow('posenet', overlay_image)
+            cv2.imshow('Arjuna Team - Smart Seat', overlay_image)
             frame_count += 1
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -129,8 +130,6 @@ def main():
                     bodya = ((bodya_1+bodya_2)/2) / pixel_cm_ratio
 
                     print("Length of\nA = %f cm\nB = %f cm\nC = %f cm\nF = %fcm" % (bodya, bodyb, bodyc, bodyf))
-                    ser = serial.Serial('COM1', 9600)
-                    time.sleep(2)
                     data_send = "%d %d %d %d\r\n" % (int(bodya), int(bodyb), int(bodyc), int(bodyf))
                     ser.write(str.encode(data_send))
                     ser.close()

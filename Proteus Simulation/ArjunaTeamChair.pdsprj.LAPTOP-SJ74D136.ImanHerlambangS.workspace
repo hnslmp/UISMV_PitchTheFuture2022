@@ -95,13 +95,13 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="940" x="34" flags="00000023" y="143" h="161" pid="0" iid="5">
+   <POPUP w="940" x="46" flags="00008023" y="123" h="161" pid="0" iid="5">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="930" x="50" flags="00008023" y="333" h="181" pid="0" iid="6">
+   <POPUP w="930" x="43" flags="00000023" y="280" h="181" pid="0" iid="6">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
