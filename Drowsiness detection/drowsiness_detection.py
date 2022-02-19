@@ -105,13 +105,13 @@ while(True):
             if(thicc<2):
                 thicc=2
         cv2.rectangle(frame,(0,0),(width,height),(0,0,255),thicc) 
-        ser = serial.Serial('COM2', 9600)
+        # ser = serial.Serial('COM2', 9600)
         time.sleep(2)
-        data_send = "RECLINE\r\n"
-        ser.write(str.encode(data_send))
+        # data_send = "RECLINE\r\n"
+        # ser.write(str.encode(data_send))
     else :
         sound.stop()
-    cv2.imshow('frame',frame)
+    cv2.imshow('Arjuna Team - Seat Drowsiness Detection',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()
