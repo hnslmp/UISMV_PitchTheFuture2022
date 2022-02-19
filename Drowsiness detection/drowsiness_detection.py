@@ -6,7 +6,7 @@ from pygame import mixer
 import time
 import serial
 
-
+ser = serial.Serial('COM2', 9600)
 mixer.init()
 sound = mixer.Sound('alarm.wav')
 
@@ -20,7 +20,7 @@ lbl=['Close','Open']
 
 model = load_model('models/cnnCat2_1_12.h5')
 path = os.getcwd()
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(1) #Set the camera ID
 font = cv2.FONT_HERSHEY_COMPLEX_SMALL
 count=0
 score=0
@@ -106,9 +106,12 @@ while(True):
                 thicc=2
         cv2.rectangle(frame,(0,0),(width,height),(0,0,255),thicc) 
         # ser = serial.Serial('COM2', 9600)
-        time.sleep(2)
-        # data_send = "RECLINE\r\n"
-        # ser.write(str.encode(data_send))
+        # time.sleep(2)
+        try :
+            data_send = "RECLINE\r\n"
+            ser.write(str.encode(data_send))
+        except :
+            print("Unable to send command throug serial / Serial port not available")
     else :
         sound.stop()
     cv2.imshow('Arjuna Team - Seat Drowsiness Detection',frame)
