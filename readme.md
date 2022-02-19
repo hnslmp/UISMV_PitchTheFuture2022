@@ -41,6 +41,7 @@ Install the following packages :
 pip install opencv-contrib-python
 pip install tensorflow (if you didnt create the environment with tensorflow)
 pip install pygame (to play warning sound)
+pip install pillow
 ```
 
 ## Install PoseNet Python - Chair Curvature Program
