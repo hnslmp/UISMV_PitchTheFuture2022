@@ -16,7 +16,7 @@ Both of these program requires a camera to be connected to the Computer. Make su
 ## III. Requirements
 - Tensorflow
 - Pygame
-- OpenCV
+- OpenCV (Contrib Version)
 - Scipy
 - Pyyaml
 - pySerial
@@ -41,6 +41,7 @@ Install the following packages :
 pip install opencv-contrib-python
 pip install tensorflow (if you didnt create the environment with tensorflow)
 pip install pygame (to play warning sound)
+pip install pillow
 ```
 
 ## Install PoseNet Python - Chair Curvature Program
@@ -53,7 +54,6 @@ pip install scipy
 pip install pyyaml
 pip install opencv-contrib-python
 pip install pySerial
-
 ```
 
 Development and testing was done with Conda Python 3.6.13 and Tensorflow 1.12.0 on Windows with Anaconda.
