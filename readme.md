@@ -63,6 +63,8 @@ Then Print the aruco marker and place it near your desired target (seatbelt for 
 ```
 ArucoMarker.pdf
 ```
+Note that the marker had to be exactly 5 Centimeter x 5 Centimeter (or by printing it without scaling).
+
 Then run the program by running :
 ```
 webcam_demo.py
