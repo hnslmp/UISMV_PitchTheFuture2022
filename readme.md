@@ -9,6 +9,8 @@ This Repository contain 2 major program for Universitas Indonesia Arjuna Team Pi
 
 Both of these program requires a camera to be connected to the Computer. Make sure you set the Camera ID correctly so the program can run.
 
+You can download our written report [here](https://github.com/hnslmp/UISMV_PitchTheFuture2022/blob/main/Docs/Written%20Report.pdf)
+
 ## II.Major Features
 - **Drowsiness Detection**: This program detect the left eye and right eye using camera to measure drowsiness. If the driver is considered drowsy, the seat will adjust itself so that the passenger can rest
 - **Chair Curvature Detection**: This program detect the posture and size of the passenger's body and adjust the passenger seat to be comfortable according to ergonomic standards
