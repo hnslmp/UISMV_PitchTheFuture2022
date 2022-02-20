@@ -1,4 +1,5 @@
 # Arjuna Team - Shell Pitch the Future
+![alt text](https://github.com/hnslmp/UISMV_PitchTheFuture2022/blob/main/Docs/UISMV%20Logo.png)   
 ## University of Indonesia
 
 ## I.Introduction
@@ -15,7 +16,7 @@ Both of these program requires a camera to be connected to the Computer. Make su
 ## III. Requirements
 - Tensorflow
 - Pygame
-- OpenCV
+- OpenCV (Contrib Version)
 - Scipy
 - Pyyaml
 - pySerial
@@ -40,7 +41,13 @@ Install the following packages :
 pip install opencv-contrib-python
 pip install tensorflow (if you didnt create the environment with tensorflow)
 pip install pygame (to play warning sound)
+pip install pillow
 ```
+Then run the program by running :
+```
+drowsiness_detection.py
+```
+Youtube Demo link : https://www.youtube.com/watch?v=S5CbaeaB6aM
 
 ## Install PoseNet Python - Chair Curvature Program
 
@@ -52,8 +59,18 @@ pip install scipy
 pip install pyyaml
 pip install opencv-contrib-python
 pip install pySerial
-
 ```
+Then Print the aruco marker and place it near your desired target (seatbelt for example). The aruco file is in the aruco folder and .pdf with name:
+```
+ArucoMarker.pdf
+```
+Note that the marker had to be exactly 5 Centimeter x 5 Centimeter (or by printing it without scaling).
+
+Then run the program by running :
+```
+webcam_demo.py
+```
+Youtube Demo link : https://youtu.be/xjfZCjrtiTw
 
 Development and testing was done with Conda Python 3.6.13 and Tensorflow 1.12.0 on Windows with Anaconda.
 
