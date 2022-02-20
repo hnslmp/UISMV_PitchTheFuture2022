@@ -33,7 +33,7 @@ conda activate arjunaptf
 ```
 
 ## Install Drowsiness Detection Requirements
-This Repository contain custom configured drowsiness detection based on https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/.
+This Repository contain custom configured drowsiness detection based on [Data FLair Driver Drowsiness Detection System](https://data-flair.training/blogs/python-project-driver-drowsiness-detection-system/).
 
 A suitable Python 3.x environment with a recent version of Tensorflow is required.
 Development and testing was done with Conda Python 3.6.13 and Tensorflow 1.12.0 on Windows.
@@ -53,7 +53,7 @@ Youtube Demo link : https://www.youtube.com/watch?v=S5CbaeaB6aM
 
 ## Install PoseNet Python - Chair Curvature Program
 
-This repository contains a pure Python implementation (multi-pose only) of the Google TensorFlow.js Posenet model. For a (slightly faster) PyTorch implementation that followed from this, see (https://github.com/rwightman/posenet-pytorch)
+This repository contains a pure Python implementation (multi-pose only) of the Google TensorFlow.js Posenet model. For a (slightly faster) PyTorch implementation that followed from this, see [posenet here](https://github.com/rwightman/posenet-pytorch)
 
 Install the following packages:
 ```
